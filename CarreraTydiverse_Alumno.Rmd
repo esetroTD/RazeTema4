@@ -92,21 +92,21 @@ Se pueden descargar ficheros actuales del `logs` usando la librería https://r-h
 
 ```{r,eval=FALSE}
 # Fuente de datos http://cran-logs.rstudio.com/
-mydf <- read_csv("data/2024-03-12.csv")
+mydf <- read.csv('~/1er CURSO GRADO CIENCIA DE DATOS UV/TRATAMIENTO DE LOS DATOS/Tema4. Manejo de datos-20250312/RazeTema4/data/2024-03-12.Rdata')
 
 set.seed(seed=14032024)
 N<-200000
-I<-sample(1:nrow(mydf),size=N,replace=FALSE)
+I<-sample(1:nrow(mydf),size=N)
 mydf<-mydf[I,]
 # Guardamos en formato binario, la primera vez que cargamos
-save(file = './data/2024-03-12.Rdata',list=c('mydf'))
+save(file = '~/1er CURSO GRADO CIENCIA DE DATOS UV/TRATAMIENTO DE LOS DATOS/Tema4. Manejo de datos-20250312/RazeTema4/data/2024-03-12.Rdata',list=c('mydf'))
 ```
 
 Después de la primera carga poner **eval=FALSE** en el *chunk* anterior para acelerar la ejecución.
 
 ```{r}
 # Cargamos el fichero binario
-load(file ='./data/2024-03-12.Rdata')
+load(file ='~/1er CURSO GRADO CIENCIA DE DATOS UV/TRATAMIENTO DE LOS DATOS/Tema4. Manejo de datos-20250312/RazeTema4/data/2024-03-12.Rdata')
 dim(mydf)
 head(mydf)
 
@@ -133,7 +133,8 @@ glimpse(cran)
 
 4. Elige únicamente las variables `ip_id, package, country`
 ```{r}
-
+library(dplyr)
+cran_selected <- cran[, c("ip_id", "package", "country")]
 ```
 5. Elige todas las variables entre `r_arch y country` 
 ```{r}
