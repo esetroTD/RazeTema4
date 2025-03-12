@@ -322,7 +322,7 @@ cran %>% mutate(size_mb=size/2^20)%>%filter(size <=0.5)
 ```
 28. Repite el apartado anterior ordenando los resultados, en orden descendente según el tamaño en Megabytes y muéstralo por pantalla.
 ```{r}
-
+cran %>% mutate(size_mb=size/2^20)%>%filter(size <=0.5)%>%arrange(desc(size_mb))%>%print()
 
 
 
@@ -331,7 +331,10 @@ cran %>% mutate(size_mb=size/2^20)%>%filter(size <=0.5)
 `cran%>%...+geom_point()`
 
 ```{r}
+load("data/datostidyr.Rdata")
+tidy_students <- students %>% pivot_longer(cols = c(male, female),names_to = "sex", values_to = "count") 
 
+tidy_students
 
 
 
@@ -375,9 +378,6 @@ Carga el fichero de datos `datostidyr.Rdata` que contiene varios conjuntos de da
 La columna `grade` es la calificación y las dos siguientes el número de estudiantes hombre y mujer que han recibido dicha calificación.
 ¿ Cuáles son las variables ?. Transfórmalo en un conjunto `tidy` con las variables, `grade, sex y count`
 ```{r}
-
-
-
 ```
 30. Considera el conjunto ´students2´, que es similar al primero pero que se han recogido datos correspondientes a dos grupos, (`male_1, female_1`, etc). Transfórmalo en un conjunto `tidy` añadiendo una columna adicional correspondiente al grupo (llama a la nueva variable `class`)
 ```{r}
