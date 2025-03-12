@@ -158,8 +158,6 @@ subset(cran, country == "ES" & r_version > "3.4.0")
 
 7. Elige aquellas descargas realizadas desde España (ES), o Portugal (PT).
 ```{r}
-subset(cran, package == "ES" | r_version > "3.4.0")
-
 
 ```
 
